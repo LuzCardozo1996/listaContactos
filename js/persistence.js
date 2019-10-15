@@ -11,8 +11,8 @@ class Persistence{
 	//declaracion de una funcion
 	recuperarTodos(){
 		//recupera todos los datos del localStorage y los devuelve en formato JSON
-			console.log(this.db.getItem('personas'));
-			console.log(JSON.parse(this.db.getItem('personas')));
+			//console.log(this.db.getItem('personas'));
+			//console.log(JSON.parse(this.db.getItem('personas')));
 
 
 
@@ -27,6 +27,29 @@ class Persistence{
 
 	}
 
+	recuperarPorIndice(indice){
+		this.personas=this.recuperarTodos();
+		return this.personas[indice];
+
+	}
+
+
+	modificar(contacto, indice){
+		this.personas=this.recuperarTodos();
+		this.personas[indice]=contacto;
+		this.db.personas=JSON.stringify(this.personas);
+
+	}
+
+	eliminar(contacto,indice){
+		this.personas=this.recuperarTodos();
+		//elimina un elemento del array utilizando el indice
+		this.personas.splice(indice,1);
+		this.db.personas=JSON.stringify(this.personas);
+
+	}
+
 
 	
+
 }
